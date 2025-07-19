@@ -1,115 +1,129 @@
-/* Body + fonts + colors */
+/* Reset */
+* {
+  margin: 0; padding: 0; box-sizing: border-box;
+}
 body {
   font-family: 'Merriweather', serif;
-  background-color: #fff;
-  color: #222;
+  background: #fff;
+  color: #111;
   max-width: 900px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 30px 20px;
   line-height: 1.7;
+  position: relative;
 }
-
-/* Header styling with royal blue accent */
 header {
-  border-bottom: 3px solid #4169E1; /* Royal Blue */
-  padding-bottom: 15px;
-  margin-bottom: 30px;
   text-align: center;
+  margin-bottom: 40px;
+  border-bottom: 3px solid #4169E1; /* royal blue */
+  padding-bottom: 15px;
 }
-
 header h1 {
+  color: #4169E1;
   font-size: 2.8rem;
   font-weight: 700;
-  color: #4169E1;
-}
-
-/* Sidebar styles */
-#sidebar {
-  position: fixed;
-  top: 0;
-  left: -280px;
-  width: 260px;
-  height: 100vh;
-  background-color: #4169E1; /* Royal Blue */
-  color: #fff;
-  overflow-y: auto;
-  padding-top: 70px;
-  transition: left 0.3s ease;
-  z-index: 1000;
-}
-
-#sidebar.show {
-  left: 0;
-}
-
-#sidebar ul {
-  list-style: none;
-  padding-left: 20px;
-}
-
-#sidebar ul li {
-  margin: 15px 0;
-}
-
-#sidebar ul li a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 1.1rem;
-  transition: color 0.2s;
-}
-
-#sidebar ul li a:hover {
-  color: #c0d6ff; /* lighter royal blue highlight */
 }
 
 /* Sidebar toggle button */
 #sidebarToggle {
   position: fixed;
-  top: 15px;
-  right: 15px;
-  background: none;
-  border: none;
-  font-size: 2.5rem;
-  cursor: pointer;
+  top: 20px;
+  right: 20px;
+  background: #fff;
+  border: 2px solid #4169E1;
   color: #4169E1;
-  z-index: 1100;
+  font-size: 1.8rem;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgb(65 105 225 / 0.3);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  z-index: 1200;
+  user-select: none;
+}
+#sidebarToggle:hover {
+  background: #4169E1;
+  color: #fff;
 }
 
-/* Main content */
+/* Sidebar panel */
+#sidebar {
+  position: fixed;
+  top: 0;
+  right: -280px;
+  width: 280px;
+  height: 100vh;
+  background: #fff;
+  box-shadow: -3px 0 10px rgba(0,0,0,0.15);
+  padding: 60px 20px 20px;
+  transition: right 0.3s ease;
+  z-index: 1150;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-left: 3px solid #4169E1;
+}
+#sidebar.show {
+  right: 0;
+}
+#sidebar button {
+  background: #4169E1;
+  border: none;
+  color: white;
+  font-size: 1.1rem;
+  padding: 12px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 5px rgb(65 105 225 / 0.5);
+}
+#sidebar button:hover {
+  background: #254e9b;
+}
+
 main article {
   margin-bottom: 60px;
+  scroll-margin-top: 90px; /* offset for smooth scroll */
 }
-
 main h2 {
   font-size: 2rem;
-  margin-bottom: 15px;
+  color: #254e9b;
   border-bottom: 2px solid #4169E1;
-  padding-bottom: 8px;
-  color: #254e9b; /* Darker royal blue shade */
-}
-
-main p {
+  padding-bottom: 6px;
   margin-bottom: 20px;
+}
+main p {
   font-size: 1.15rem;
   color: #333;
+  margin-bottom: 16px;
 }
 
-/* Responsive scaling */
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
   body {
-    padding: 15px;
-    max-width: 100%;
+    padding: 20px 15px;
   }
-
-  #sidebar {
-    width: 220px;
-  }
-
   main h2 {
     font-size: 1.6rem;
   }
-
   main p {
     font-size: 1rem;
+  }
+  #sidebar {
+    width: 220px;
+  }
+  #sidebar button {
+    font-size: 1rem;
+    padding: 10px 14px;
+  }
+  #sidebarToggle {
+    font-size: 1.5rem;
+    padding: 7px 12px;
   }
 }
