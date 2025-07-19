@@ -1,25 +1,21 @@
+const sidebarToggle = document.getElementById('sidebarToggle');
 const sidebar = document.getElementById('sidebar');
-const toggleBtn = document.getElementById('sidebarToggle');
+const buttons = sidebar.querySelectorAll('button[data-target]');
 
-toggleBtn.addEventListener('click', () => {
-  sidebar.classList.toggle('show');
+sidebarToggle.addEventListener('click', () => {
+  sidebar.classList.toggle('active');
 });
 
-// Close sidebar when clicking outside it
-document.addEventListener('click', (e) => {
-  if (!sidebar.contains(e.target) && !toggleBtn.contains(e.target)) {
-    sidebar.classList.remove('show');
-  }
-});
-
-// Smooth scroll to sections when sidebar buttons clicked
-sidebar.querySelectorAll('button').forEach(btn => {
+// Smooth scroll to section on sidebar button click
+buttons.forEach(btn => {
   btn.addEventListener('click', () => {
     const targetId = btn.getAttribute('data-target');
-    const section = document.getElementById(targetId);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-      sidebar.classList.remove('show');
+    const targetEl = document.getElementById(targetId);
+    if (targetEl) {
+      targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      sidebar.classList.remove('active');
     }
   });
 });
+
+// Responsive scaling is handled by CSS media queries already
