@@ -50,7 +50,7 @@ h1 {
 #sidebar {
   position: fixed;
   top: 0;
-  right: -280px; /* hidden by default */
+  right: -300px; /* hidden by default */
   width: 280px;
   height: 100vh;
   background: white;
