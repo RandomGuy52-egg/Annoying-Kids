@@ -1,7 +1,9 @@
+// Grab elements
 const sidebarToggle = document.getElementById('sidebarToggle');
 const sidebar = document.getElementById('sidebar');
 const buttons = sidebar.querySelectorAll('button[data-target]');
 
+// Toggle sidebar open/close
 sidebarToggle.addEventListener('click', () => {
   sidebar.classList.toggle('active');
 });
@@ -12,10 +14,10 @@ buttons.forEach(btn => {
     const targetId = btn.getAttribute('data-target');
     const targetEl = document.getElementById(targetId);
     if (targetEl) {
+      // Scroll smoothly
       targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // Close sidebar after click
       sidebar.classList.remove('active');
     }
   });
 });
-
-// Responsive scaling is handled by CSS media queries already
